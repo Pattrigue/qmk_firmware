@@ -54,14 +54,16 @@ void reset_danish_mod_taps(void) {
     }
 }
 
-
-
 bool process_record_user_danish(uint16_t keycode, keyrecord_t *record) {
     if (layer_state != 0) return true;
 
     if (keycode == TOGGLE_DANISH_MOD_TAP_KEYCODE) {
         toggle_danish_mod_tap();        
     }
+
+    if (record->event.pressed) {
+		reset_danish_mod_taps();
+	}
 
     if (!danish_mod_tap_enabled) return true;
 
@@ -73,10 +75,6 @@ bool process_record_user_danish(uint16_t keycode, keyrecord_t *record) {
 		case KC_O:
 			return danish_mod_tap_key(keycode, record, 2);
     }
-
-	if (record->event.pressed) {
-		reset_danish_mod_taps();
-	}
 
     return true;
 }
