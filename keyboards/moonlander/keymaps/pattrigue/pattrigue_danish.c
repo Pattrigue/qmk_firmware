@@ -59,7 +59,7 @@ bool process_record_user_danish(uint16_t keycode, keyrecord_t *record) {
         toggle_danish_mod_tap();    
     }
 
-    if (!danish_mod_tap_enabled) return false;
+    if (!danish_mod_tap_enabled) return true;
 
     if (record->event.pressed) {
 		reset_danish_mod_taps();
