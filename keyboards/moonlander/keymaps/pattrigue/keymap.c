@@ -27,6 +27,8 @@
 #include "keymap_belgian.h"
 #include "keymap_us_international.h"
 
+#include "pattrigue_danish.c"
+
 #define KC_MAC_UNDO LGUI(KC_Z)
 #define KC_MAC_CUT LGUI(KC_X)
 #define KC_MAC_COPY LGUI(KC_C)
@@ -43,8 +45,6 @@
 #define LSA_T(kc) MT(MOD_LSFT | MOD_LALT, kc)
 #define BP_NDSH_MAC ALGR(KC_8)
 #define MOON_LED_LEVEL LED_LEVEL
-
-#define NUM_DANISH_MOD_TAPS 3
 
 enum custom_keycodes {
     RGB_SLD = ML_SAFE_RANGE,
@@ -123,37 +123,14 @@ void rgb_matrix_indicators_user(void) {
     }
 }
 
-bool is_danish_mod_held;
-
-uint16_t key_timer;
-
-typedef struct {
-    uint16_t timer;
-    uint16_t keycode;
-    bool     held;
-} danish_mod_tap;
-
-danish_mod_tap danish_mod_taps[NUM_DANISH_MOD_TAPS];
-
-danish_mod_taps[0].keycode = DK_ARNG;
-danish_mod_taps[1].keycode = DK_OSTR;
-danish_mod_taps[2].keycode = DK_AE;
-
-bool danish_mod_tap_key(uint16_t keycode, keyrecord_t *record, uint16_t i) {
-    if (record->event.pressed) {
-        danish_mod_taps[i].timer = timer_read();
-        danish_mod_taps[i].held = true;
-        tap_code16(keycode);
-    } else {
-        danish_mod_taps[i].held = false;
-    }
-    return false;
-}
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KC_A:
-            return danish_mod_tap_key(keycode, record, 0);
+            return danish_mod_tap_key(keycode, record, DK_ARNG, 0);
+        case KC_E:
+            return danish_mod_tap_key(keycode, record, DK_AE, 1);
+        case KC_O:
+            return danish_mod_tap_key(keycode, record, DK_OSTR, 2);
         case ST_MACRO_0:
             if (record->event.pressed) {
                 SEND_STRING(SS_LGUI(SS_LSFT(SS_TAP(X_S))));
@@ -194,14 +171,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-void matrix_scan_user(void) {
-    for (int i = 0; i < NUM_DANISH_MOD_TAPS; i++) {
-        if (danish_mod_taps[i].held) {
-            if (timer_elapsed(danish_mod_taps[i].timer) > TAPPING_TERM) {
-                tap_code16(KC_BSPACE);
-                tap_code16(danish_mod_taps[i].keycode);
-                danish_mod_taps[i].held = false;
-            }
-        }
-  }
-}
+void matrix_scan_user(void) { check_danish_mod_tap_timers(); }
