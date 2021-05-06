@@ -60,10 +60,10 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
     KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           DK_PLUS,        
-    KC_TAB,         KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_J,           KC_L,           KC_U,           KC_Y,           KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TAB,         KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_J,           KC_L,           KC_U,           KC_Y,           KC_TRANSPARENT, KC_F24,        
     DK_QUOT,        KC_A,           KC_R,           KC_S,           KC_T,           KC_G,           KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_M,           KC_N,           KC_E,           KC_I,           KC_O,           KC_ENTER,       
     KC_LSHIFT,      KC_Z,           KC_X,           KC_C,           KC_D,           KC_V,                                           KC_K,           KC_H,           DK_COMM,        DK_DOT,         DK_MINS,        KC_RSHIFT,      
-    KC_LCTRL,       KC_TRANSPARENT, KC_LGUI,        KC_LALT,        MO(1),          ST_MACRO_0,                                                                                                     ST_MACRO_1,     MO(2),          LSFT(KC_RCTRL), KC_TRANSPARENT, KC_TRANSPARENT, RCTL_T(KC_NO),  
+    KC_LCTRL,       KC_TRANSPARENT, KC_LGUI,        KC_LALT,        MO(1),          ST_MACRO_0,                                                                                                     ST_MACRO_1,     MO(2),          LSFT(KC_RCTRL), KC_TRANSPARENT, KC_TRANSPARENT, KC_RCTRL,       
     KC_SPACE,       KC_DELETE,      KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, KC_BSPACE
   ),
   [1] = LAYOUT_moonlander(
