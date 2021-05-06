@@ -1,5 +1,5 @@
 /*
-Add the following to the switch case in process_record_user:
+Add the following to the switch case in process_record_user in keymap.c:
 
 case KC_A:
 	return danish_mod_tap_key(keycode, record, DK_ARNG, 0);
@@ -7,6 +7,12 @@ case KC_E:
 	return danish_mod_tap_key(keycode, record, DK_AE, 1);
 case KC_O:
 	return danish_mod_tap_key(keycode, record, DK_OSTR, 2);
+
+Add the following function call:
+
+void matrix_scan_user(void) {
+	 check_danish_mod_tap_timers(); 
+}
 */
 
 
