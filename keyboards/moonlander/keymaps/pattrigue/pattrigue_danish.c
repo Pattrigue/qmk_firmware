@@ -15,6 +15,8 @@ make moonlander:layout
 
 #define NUM_DANISH_MOD_TAPS 3
 
+bool danish_mod_tap_enabled = true;
+
 typedef struct {
     uint16_t timer;
     uint16_t keycode;
@@ -27,6 +29,10 @@ danish_mod_tap danish_mod_taps[NUM_DANISH_MOD_TAPS] =
 	{.keycode = DK_AE},
 	{.keycode = DK_OSTR}
 };
+
+void toggle_danish_mod_tap(void) {
+    danish_mod_tap_enabled = !danish_mod_tap_enabled;
+}
 
 bool danish_mod_tap_key(uint16_t keycode, keyrecord_t *record, uint16_t i) {
     if (record->event.pressed) {
@@ -49,6 +55,7 @@ void reset_danish_mod_taps(void) {
 
 bool process_record_user_danish(uint16_t keycode, keyrecord_t *record){
     if (layer_state != 0) return true;
+    if (!danish_mod_tap_enabled) return true;
 
     switch (keycode) {
 		case KC_A:
