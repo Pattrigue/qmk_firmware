@@ -1,5 +1,4 @@
-/*
-Add the following to the switch case in process_record_user in keymap.c:
+/*Add the following to the very start of process_record_user before the switch case in keymap.c:
 
 if (!process_record_user_danish(keycode, record)) return false;
 
