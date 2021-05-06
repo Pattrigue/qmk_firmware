@@ -55,8 +55,6 @@ void reset_danish_mod_taps(void) {
 }
 
 bool process_record_user_danish(uint16_t keycode, keyrecord_t *record) {
-    if (layer_state != 0) return true;
-
     if (keycode == TOGGLE_DANISH_MOD_TAP_KEYCODE && record->event.pressed) {
         toggle_danish_mod_tap();    
     }
