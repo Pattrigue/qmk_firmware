@@ -14,6 +14,7 @@ make moonlander:layout
 */
 
 #define NUM_DANISH_MOD_TAPS 3
+#define TOGGLE_DANISH_MOD_TAP_KEYCODE KC_F24
 
 bool danish_mod_tap_enabled = true;
 
@@ -64,7 +65,9 @@ bool process_record_user_danish(uint16_t keycode, keyrecord_t *record){
 			return danish_mod_tap_key(keycode, record, 1);
 		case KC_O:
 			return danish_mod_tap_key(keycode, record, 2);
-	}
+        case KC_F24:
+            toggle_danish_mod_tap();
+    }
 
 	if (record->event.pressed) {
 		reset_danish_mod_taps();
