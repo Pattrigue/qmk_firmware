@@ -17,7 +17,7 @@ make moonlander:layout
 #define TOGGLE_DANISH_MOD_TAP_KEYCODE KC_F24
 
 float toggle_danish_mod_tap_on_song[][2] = SONG(PLANCK_SOUND);
-float toggle_danish_mod_tap_off_song[][2] = SONG(AUDIO_OFF_SOUND);
+float toggle_danish_mod_tap_off_song[][2] = SONG(MUSIC_OFF_SOUND);
 
 bool danish_mod_tap_enabled = true;
 
