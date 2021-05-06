@@ -8,6 +8,9 @@ Add the following function call:
 void matrix_scan_user(void) {
 	 check_danish_mod_tap_timers(); 
 }
+
+And:
+make moonlander:layout
 */
 
 #define NUM_DANISH_MOD_TAPS 3
@@ -45,7 +48,9 @@ void reset_danish_mod_taps(void) {
 }
 
 bool process_record_user_danish(uint16_t keycode, keyrecord_t *record){
-	switch (keycode) {
+    if (layer_state != 0) return true;
+
+    switch (keycode) {
 		case KC_A:
 			return danish_mod_tap_key(keycode, record, 0);
 		case KC_E:
