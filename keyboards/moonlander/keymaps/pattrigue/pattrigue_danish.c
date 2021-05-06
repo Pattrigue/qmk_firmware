@@ -16,6 +16,9 @@ make moonlander:layout
 #define NUM_DANISH_MOD_TAPS 3
 #define TOGGLE_DANISH_MOD_TAP_KEYCODE KC_F24
 
+float toggle_danish_mod_tap_on_song[][2] = SONG(PLANCK_SOUND);
+float toggle_danish_mod_tap_off_song[][2] = SONG(AUDIO_OFF_SOUND);
+
 bool danish_mod_tap_enabled = true;
 
 typedef struct {
@@ -34,13 +37,13 @@ danish_mod_tap danish_mod_taps[NUM_DANISH_MOD_TAPS] =
 void toggle_danish_mod_tap(void) {
     danish_mod_tap_enabled = !danish_mod_tap_enabled;
 
+#ifdef AUDIO_ENABLE
     if (danish_mod_tap_enabled) {
-        float toggle_song[][2] = SONG(CAPS_LOCK_ON_SOUND);
-        PLAY_SONG(toggle_song);
+        PLAY_SONG(toggle_danish_mod_tap_on_song);
     } else {
-        float toggle_song[][2] = SONG(CAPS_LOCK_OFF_SOUND);
-        PLAY_SONG(toggle_song);
+        PLAY_SONG(toggle_danish_mod_tap_off_song);
     }
+#endif
 }
 
 bool danish_mod_tap_key(uint16_t keycode, keyrecord_t *record, uint16_t i) {
