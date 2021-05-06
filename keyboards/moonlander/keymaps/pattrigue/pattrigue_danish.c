@@ -80,7 +80,9 @@ bool process_record_user_danish(uint16_t keycode, keyrecord_t *record) {
 }
 
 void check_danish_mod_tap_timers(void) {
-	for (uint16_t i = 0; i < NUM_DANISH_MOD_TAPS; i++) {
+    if (!danish_mod_tap_enabled) return;
+
+    for (uint16_t i = 0; i < NUM_DANISH_MOD_TAPS; i++) {
         if (danish_mod_taps[i].held) {
             if (timer_elapsed(danish_mod_taps[i].timer) > TAPPING_TERM) {
                 tap_code16(KC_BSPACE);
