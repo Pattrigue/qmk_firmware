@@ -64,9 +64,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
     KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           DYN_REC_START1,                                 DYN_MACRO_PLAY1,KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           DK_PLUS,        
     KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           DK_LBRC,                                        DK_RBRC,        KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           DK_QUES,        
-    DK_QUOT,        KC_A,           KC_S,           KC_D,           KC_F,           KC_G,           KC_HOME,                                                                        KC_END,         KC_H,           KC_J,           KC_K,           KC_L,           KC_TRANSPARENT, TT(6),          
+    DK_QUOT,        KC_A,           KC_S,           KC_D,           KC_F,           KC_G,           KC_HOME,                                                                        KC_END,         KC_H,           KC_J,           KC_K,           KC_L,           DK_AE,          TT(6),          
     KC_LSHIFT,      KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           DK_COMM,        DK_DOT,         KC_UP,          DK_MINS,        
-    KC_LCTRL,       TG(1),          KC_LGUI,        KC_LALT,        KC_SPACE,       ST_MACRO_0,                                                                                                     LCTL(KC_PSCREEN),KC_BSPACE,      KC_TRANSPARENT, KC_LEFT,        KC_DOWN,        KC_RIGHT,       
+    KC_LCTRL,       TG(1),          KC_LGUI,        KC_LALT,        KC_SPACE,       ST_MACRO_0,                                                                                                     LCTL(KC_PSCREEN),KC_BSPACE,      KC_F24,         KC_LEFT,        KC_DOWN,        KC_RIGHT,       
     MO(2),          MO(4),          KC_DELETE,                      LT(5,KC_MEDIA_PLAY_PAUSE),TT(3),          KC_ENTER
   ),
   [1] = LAYOUT_moonlander(
@@ -193,7 +193,7 @@ void rgb_matrix_indicators_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (!process_record_user_danish(keycode, record)) return false;
-  
+
   switch (keycode) {
     case ST_MACRO_0:
     if (record->event.pressed) {
