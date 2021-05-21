@@ -1,4 +1,7 @@
 /*
+
+#include "pattrigue_danish.c"
+
 Add the following to the very start of process_record_user before the switch case in keymap.c:
 
 if (!process_record_user_danish(keycode, record)) return false;
