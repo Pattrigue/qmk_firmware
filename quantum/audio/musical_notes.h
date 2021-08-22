@@ -65,7 +65,6 @@
 #ifndef TIMBRE_DEFAULT
 #    define TIMBRE_DEFAULT TIMBRE_50
 #endif
-
 // Notes - # = Octave
 
 #ifdef __arm__

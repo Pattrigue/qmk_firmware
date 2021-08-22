@@ -19,12 +19,23 @@
 
 #include "quantum.h"
 
+#ifndef WPM_ESTIMATED_WORD_SIZE
+#    define WPM_ESTIMATED_WORD_SIZE 5
+#endif
+#ifndef WPM_SMOOTHING
+#    define WPM_SMOOTHING 0.0487
+#endif
+
 bool wpm_keycode(uint16_t keycode);
 bool wpm_keycode_kb(uint16_t keycode);
 bool wpm_keycode_user(uint16_t keycode);
 
-void set_current_wpm(uint8_t);
+#ifdef WPM_ALLOW_COUNT_REGRESSION
+uint8_t wpm_regress_count(uint16_t keycode);
+#endif
+
+void    set_current_wpm(uint8_t);
 uint8_t get_current_wpm(void);
-void update_wpm(uint16_t);
+void    update_wpm(uint16_t);
 
 void decay_wpm(void);

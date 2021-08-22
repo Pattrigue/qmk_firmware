@@ -40,7 +40,7 @@
 #include "report.h"
 #include "usb_descriptor.h"
 #ifdef WEBUSB_ENABLE
-#include "webusb_descriptor.h"
+#    include "webusb_descriptor.h"
 #endif
 #include "usb_descriptor_common.h"
 
@@ -119,19 +119,15 @@ const USB_Descriptor_HIDReport_Datatype_t PROGMEM SharedReport[] = {
 #    endif
         HID_RI_USAGE(8, 0x01),             // Pointer
         HID_RI_COLLECTION(8, 0x00),        // Physical
-            // Buttons (5 bits)
+            // Buttons (8 bits)
             HID_RI_USAGE_PAGE(8, 0x09),    // Button
             HID_RI_USAGE_MINIMUM(8, 0x01), // Button 1
-            HID_RI_USAGE_MAXIMUM(8, 0x05), // Button 5
+            HID_RI_USAGE_MAXIMUM(8, 0x08), // Button 8
             HID_RI_LOGICAL_MINIMUM(8, 0x00),
             HID_RI_LOGICAL_MAXIMUM(8, 0x01),
-            HID_RI_REPORT_COUNT(8, 0x05),
+            HID_RI_REPORT_COUNT(8, 0x08),
             HID_RI_REPORT_SIZE(8, 0x01),
             HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE),
-            // Button padding (3 bits)
-            HID_RI_REPORT_COUNT(8, 0x01),
-            HID_RI_REPORT_SIZE(8, 0x03),
-            HID_RI_INPUT(8, HID_IOF_CONSTANT),
 
             // X/Y position (2 bytes)
             HID_RI_USAGE_PAGE(8, 0x01),    // Generic Desktop
@@ -288,8 +284,8 @@ const USB_Descriptor_HIDReport_Datatype_t PROGMEM ConsoleReport[] = {
 
 #ifdef WEBUSB_ENABLE
 const USB_Descriptor_BOS_t PROGMEM BOSDescriptor = BOS_DESCRIPTOR(
-		(MS_OS_20_PLATFORM_DESCRIPTOR(MS_OS_20_VENDOR_CODE, MS_OS_20_DESCRIPTOR_SET_TOTAL_LENGTH))
-		(WEBUSB_PLATFORM_DESCRIPTOR(WEBUSB_VENDOR_CODE, WEBUSB_LANDING_PAGE_INDEX))
+        (MS_OS_20_PLATFORM_DESCRIPTOR(MS_OS_20_VENDOR_CODE, MS_OS_20_DESCRIPTOR_SET_TOTAL_LENGTH))
+        (WEBUSB_PLATFORM_DESCRIPTOR(WEBUSB_VENDOR_CODE, WEBUSB_LANDING_PAGE_INDEX))
 );
 #endif
 #ifdef JOYSTICK_ENABLE
@@ -364,11 +360,12 @@ const USB_Descriptor_Device_t PROGMEM DeviceDescriptor = {
         .Size                   = sizeof(USB_Descriptor_Device_t),
         .Type                   = DTYPE_Device
     },
-#if WEBUSB_ENABLE
+#if defined(WEBUSB_ENABLE) && !defined(STENO_ENABLE)
     .USBSpecification           = VERSION_BCD(2, 1, 0),
 #else
-    .USBSpecification           = VERSION_BCD(1, 1, 0),
+    .USBSpecification           = VERSION_BCD(2, 0, 0),
 #endif
+
 #if VIRTSER_ENABLE
     .Class                      = USB_CSCP_IADDeviceClass,
     .SubClass                   = USB_CSCP_IADDeviceSubclass,
@@ -1031,10 +1028,10 @@ uint16_t get_usb_descriptor(const uint16_t wValue, const uint16_t wIndex, const 
             break;
 #ifdef WEBUSB_ENABLE
         case DTYPE_BOS:
-          Address = &BOSDescriptor;
-          Size = pgm_read_byte(&BOSDescriptor.TotalLength);
+            Address = &BOSDescriptor;
+            Size    = pgm_read_byte(&BOSDescriptor.TotalLength);
 
-          break;
+            break;
 #endif
         case DTYPE_Configuration:
             Address = &ConfigurationDescriptor;

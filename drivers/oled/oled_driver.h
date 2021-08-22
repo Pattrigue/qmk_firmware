@@ -154,8 +154,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    endif
 #endif
 
+#if !defined(OLED_FADE_OUT_INTERVAL)
+#    define OLED_FADE_OUT_INTERVAL 0x00
+#endif
+
+#if OLED_FADE_OUT_INTERVAL > 0x0F || OLED_FADE_OUT_INTERVAL < 0x00
+#    error OLED_FADE_OUT_INTERVAL must be between 0x00 and 0x0F
+#endif
+
 #if !defined(OLED_I2C_TIMEOUT)
 #    define OLED_I2C_TIMEOUT 100
+#endif
+
+#if !defined(OLED_UPDATE_INTERVAL) && defined(SPLIT_KEYBOARD)
+#    define OLED_UPDATE_INTERVAL 50
 #endif
 
 typedef struct __attribute__((__packed__)) {
@@ -173,12 +185,12 @@ typedef enum {
 
 // Initialize the oled display, rotating the rendered output based on the define passed in.
 // Returns true if the OLED was initialized successfully
-bool oled_init(uint8_t rotation);
+bool oled_init(oled_rotation_t rotation);
 
 // Called at the start of oled_init, weak function overridable by the user
 // rotation - the value passed into oled_init
-// Return new uint8_t if you want to override default rotation
-uint8_t oled_init_user(uint8_t rotation);
+// Return new oled_rotation_t if you want to override default rotation
+oled_rotation_t oled_init_user(oled_rotation_t rotation);
 
 // Clears the display buffer, resets cursor position to 0, and sets the buffer to dirty for rendering
 void oled_clear(void);
@@ -214,13 +226,17 @@ void oled_write(const char *data, bool invert);
 void oled_write_ln(const char *data, bool invert);
 
 // Pans the buffer to the right (or left by passing true) by moving contents of the buffer
+// Useful for moving the screen in preparation for new drawing
 void oled_pan(bool left);
 
 // Returns a pointer to the requested start index in the buffer plus remaining
 // buffer length as struct
 oled_buffer_reader_t oled_read_raw(uint16_t start_index);
 
+// Writes a string to the buffer at current cursor position
 void oled_write_raw(const char *data, uint16_t size);
+
+// Writes a single byte into the buffer at the specified index
 void oled_write_raw_byte(const char data, uint16_t index);
 
 // Sets a specific pixel on or off
@@ -239,17 +255,11 @@ void oled_write_P(const char *data, bool invert);
 // Remapped to call 'void oled_write_ln(const char *data, bool invert);' on ARM
 void oled_write_ln_P(const char *data, bool invert);
 
+// Writes a PROGMEM string to the buffer at current cursor position
 void oled_write_raw_P(const char *data, uint16_t size);
 #else
-// Writes a string to the buffer at current cursor position
-// Advances the cursor while writing, inverts the pixels if true
 #    define oled_write_P(data, invert) oled_write(data, invert)
-
-// Writes a string to the buffer at current cursor position
-// Advances the cursor while writing, inverts the pixels if true
-// Advances the cursor to the next page, wiring ' ' to the remainder of the current page
 #    define oled_write_ln_P(data, invert) oled_write(data, invert)
-
 #    define oled_write_raw_P(data, size) oled_write_raw(data, size)
 #endif  // defined(__AVR__)
 
