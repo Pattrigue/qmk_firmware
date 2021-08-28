@@ -52,11 +52,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * -------------------------------------------------------------------------------------
  */
 [_BASE] = LAYOUT_preonic_grid(
-  KC_ESC,        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,             KC_7,    KC_8,          KC_9,    KC_0,       DK_GRV,
-  KC_TAB,        KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,             KC_L,    KC_U,          KC_Y,    DK_QUOT,    DK_QUES,
+  KC_ESC,        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,             KC_7,    KC_8,          KC_9,    KC_0,       KEYPIRANHA,
+  KC_TAB,        KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,             KC_L,    KC_U,          KC_Y,    DK_QUOT,    DK_SCLN,
   KC_LCTL,       KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,             KC_N,    KC_E,          KC_I,    KC_O,       KC_BSPC,
   KC_LSFT,       KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,             KC_H,    DK_COMM,       DK_DOT,  DK_MINS,    DK_BSLS,
-  KC_F24,        _______, KC_LGUI, KC_LALT, MO(1),   KC_SPC,  KC_SFTENT,        MO(2),   LCTL(KC_LSFT), SCRSHOT, KEYPIRANHA, KC_DEL
+  KC_F24,        _______, KC_LGUI, KC_LALT, MO(1),   KC_SPC,  KC_SFTENT,        MO(2),   LCTL(KC_LSFT), SCRSHOT, DK_GRV,     KC_DEL
 ),
 
 
@@ -74,11 +74,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid(
-  KC_F12,       KC_F1,   KC_F2,    KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,    KC_F8,    KC_F9,   KC_F10,  KC_F11,
-  _______,      DK_DLR,  DK_DQUO,  DK_LCBR, DK_RCBR, DK_PIPE, DK_PERC, KC_7,      KC_8,    KC_9,    DK_CIRC, _______,
-  _______,      DK_EQL,  DK_EXLM,  DK_LPRN, DK_RPRN, DK_AMPR, DK_ASTR, KC_4,      KC_5,    KC_6,    DK_PLUS, _______,
-  _______,      DK_AT,   DK_LABK,  DK_LBRC, DK_RBRC, DK_RABK, DK_SLSH, KC_1,      KC_2,    KC_3,    DK_MINS, DK_HASH,
-  _______,      _______, _______,  _______, _______, _______, KC_SPC,  LT(2,KC_0),KC_DOT,KC_COMMA, DK_TILD,  _______
+  KC_F12,       KC_F1,   KC_F2,    KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,    KC_F8,    KC_F9,   KC_F10,   KC_F11,
+  _______,      DK_DLR,  DK_QUES,  DK_LCBR, DK_RCBR, DK_PIPE, DK_PERC, KC_7,      KC_8,    KC_9,    DK_DQUO,  DK_COLN,
+  _______,      DK_EQL,  DK_EXLM,  DK_LPRN, DK_RPRN, DK_AMPR, DK_ASTR, KC_4,      KC_5,    KC_6,    DK_PLUS,  _______,
+  _______,      DK_CIRC, DK_LABK,  DK_LBRC, DK_RBRC, DK_RABK, DK_SLSH, KC_1,      KC_2,    KC_3,    DK_MINS,  _______,
+  _______,      _______, _______,  _______, _______, _______, KC_SPC,  LT(2,KC_0),KC_DOT,  KC_COMMA,DK_ACUT,  _______
 ),
 
 /* Raise
@@ -95,11 +95,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid(
-  LALT(KC_F4),     _______,              _______,            _______,       _______,    _______,    _______,             _______,             _______,            _______,  _______,              KC_SYSTEM_SLEEP,
-  _______,         _______,              _______,            KC_MS_WH_UP,   _______,    _______,    SELECT_LINE,         KC_HOME,             KC_UP,              KC_END,   SELECT_WORD,          _______,
-  _______,         _______,              _______,            KC_MS_WH_DOWN, KC_MS_BTN1, _______,    LCTL(LSFT(KC_LEFT)), KC_LEFT,             KC_DOWN,            KC_RIGHT, LCTL(LSFT(KC_RIGHT)), _______,
-  _______,         LCTL(KC_Z),           LCTL(KC_X),         LCTL(KC_C),    LCTL(KC_D), LCTL(KC_V), KC_MEDIA_PREV_TRACK, KC_MEDIA_NEXT_TRACK, DK_SCLN,            DK_COLN,  DK_UNDS,              _______,
-  _______,         KC_AUDIO_VOL_DOWN,    KC_AUDIO_VOL_UP,    _______,       _______,    _______,    _______,             _______,             KC_MEDIA_PLAY_PAUSE,BACKLIT,  TO(3),                RESET
+  LALT(KC_F4),     _______,    _______,    _______,       _______,    _______,    _______,             _______,             _______,             _______,         _______,              KC_SYSTEM_SLEEP,
+  _______,         DK_TILD,    DK_HASH,    KC_MS_WH_UP,   _______,    _______,    SELECT_LINE,         KC_HOME,             KC_UP,               KC_END,          SELECT_WORD,          _______,
+  _______,         DK_UNDS,    DK_AT,      KC_MS_WH_DOWN, KC_MS_BTN1, _______,    LCTL(LSFT(KC_LEFT)), KC_LEFT,             KC_DOWN,             KC_RIGHT,        LCTL(LSFT(KC_RIGHT)), _______,
+  _______,         LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C),    LCTL(KC_D), LCTL(KC_V), KC_MEDIA_PREV_TRACK, KC_MEDIA_NEXT_TRACK, KC_AUDIO_VOL_DOWN,   KC_AUDIO_VOL_UP, _______,              _______,
+  _______,         _______,    _______,    _______,       _______,    _______,    _______,             _______,             KC_MEDIA_PLAY_PAUSE, BACKLIT,          TO(3), RESET
 ),
 
 /* Qwerty
@@ -116,11 +116,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [3] = LAYOUT_preonic_grid(
-  KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,       DK_PLUS,
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_UP, KC_O,    KC_P,       KC_DEL,
-  KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_LEFT, KC_DOWN, KC_RGHT, KC_SCLN,    KC_ENT,
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,      KC_LSFT,
-  KC_F24,  _______, KC_LALT, KC_SPC,  KC_SPC,  KC_SPC,  KC_BSPC, KC_SPC,  KC_DEL,  SCRSHOT, TO(0),      KC_DEL
+  KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,     KC_8,     KC_9,    KC_0,       _______,
+  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,     KC_I,     KC_O,    KC_P,       _______,
+  KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,     KC_K,     KC_L,    DK_QUOT,    _______,
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,     KC_COMM,  KC_DOT,  KC_UP,      KC_LSFT,
+  KC_F24,  KC_LGUI, KC_LALT, KC_SPC,  KC_SPC,  KC_SPC,  _______, _______,  _______,  _______, TO(0),      _______
 ),
 
 };
