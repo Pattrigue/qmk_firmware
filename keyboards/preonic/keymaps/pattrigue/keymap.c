@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,      DK_DLR,  DK_QUES,  DK_LCBR, DK_RCBR, DK_PIPE, DK_PERC, KC_7,      KC_8,    KC_9,    DK_DQUO,  DK_COLN,
   _______,      DK_EQL,  DK_EXLM,  DK_LPRN, DK_RPRN, DK_AMPR, DK_ASTR, KC_4,      KC_5,    KC_6,    DK_PLUS,  _______,
   _______,      DK_AT,   DK_LABK,  DK_LBRC, DK_RBRC, DK_RABK, DK_SLSH, KC_1,      KC_2,    KC_3,    DK_MINS,  DK_HASH,
-  _______,      _______, _______,  _______, _______, _______, KC_SPC,  LT(2,KC_0),KC_DOT,  KC_COMMA,DK_ACUT,  _______
+  TO(0),       _______, _______,  _______, _______, _______, KC_SPC,  LT(2,KC_0),KC_DOT,  KC_COMMA,DK_ACUT,  _______
 ),
 
 /* Raise
@@ -101,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,         DK_TILD,              DK_CIRC,         KC_MS_WH_UP,   _______,    _______,    SELECT_LINE,         KC_HOME,             KC_UP,               KC_END,           SELECT_WORD,          _______,
   _______,         KC_AUDIO_VOL_DOWN,    KC_AUDIO_VOL_UP, KC_MS_WH_DOWN, KC_MS_BTN1, _______,    LCTL(LSFT(KC_LEFT)), KC_LEFT,             KC_DOWN,             KC_RIGHT,         LCTL(LSFT(KC_RIGHT)), _______,
   _______,         LCTL(KC_Z),           LCTL(KC_X),      LCTL(KC_C),    LCTL(KC_D), LCTL(KC_V), KC_MEDIA_PREV_TRACK, KC_MEDIA_NEXT_TRACK, DK_SCLN,             DK_COLN,          DK_UNDS,              _______,
-  _______,         _______,              _______,         _______,       _______,    _______,    _______,             _______,             KC_MEDIA_PLAY_PAUSE, BACKLIT,          TO(3),                RESET
+  TO(0),           _______,              _______,         _______,       _______,    _______,    _______,             _______,             KC_MEDIA_PLAY_PAUSE, BACKLIT,          TO(3),                RESET
 ),
 
 /* Qwerty
@@ -126,11 +126,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [4] = LAYOUT_preonic_grid(
-  _______, _______, _______, _______,      _______,       _______, _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______,      _______,       _______, _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______,      _______,       _______, _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______,      _______,       _______, _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, DESKTOP_LEFT, DESKTOP_RIGHT, _______, _______, _______, _______, _______, _______, _______
+  _______, _______, _______,      _______,      _______,        _______, _______, _______,    _______, _______, _______, _______,
+  _______, _______, _______,      _______,      _______,        _______, _______, _______,    _______, _______, _______, _______,
+  _______, _______, DESKTOP_LEFT, _______, DESKTOP_RIGHT,  _______, _______, _______,    _______, _______, _______, _______,
+  _______, _______, _______,      _______,      _______,        _______, _______, _______,    _______, _______, _______, _______,
+  _______, _______, _______,      _______,      TO(_LOWER),     _______, _______, TO(_RAISE), _______, _______, _______, _______
 ),
 
 };
