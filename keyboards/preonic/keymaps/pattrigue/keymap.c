@@ -32,7 +32,9 @@ enum custom_keycodes {
   SELECT_LINE,
   SELECT_WORD,
   SCRSHOT,
-  KEYPIRANHA
+  KEYPIRANHA,
+  DESKTOP_LEFT,
+  DESKTOP_RIGHT
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -52,11 +54,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * -------------------------------------------------------------------------------------
  */
 [_BASE] = LAYOUT_preonic_grid(
-  KC_ESC,        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,             KC_7,    KC_8,          KC_9,    KC_0,       KC_DEL,
-  KC_TAB,        KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,             KC_L,    KC_U,          KC_Y,    DK_QUOT,    DK_SCLN,
-  KC_LCTL,       KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,             KC_N,    KC_E,          KC_I,    KC_O,       KC_BSPC,
-  KC_LSFT,       KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,             KC_H,    DK_COMM,       DK_DOT,  DK_MINS,    DK_BSLS,
-  KC_F24,        _______, KC_LGUI, KC_LALT, MO(1),   KC_SPC,  KC_SFTENT,        MO(2),   LCTL(KC_LSFT), SCRSHOT, DK_GRV,     KEYPIRANHA
+  KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,             KC_7,    KC_8,          KC_9,    KC_0,       KC_DEL,
+  KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,             KC_L,    KC_U,          KC_Y,    DK_QUOT,    DK_SCLN,
+  KC_LCTL, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,             KC_N,    KC_E,          KC_I,    KC_O,       KC_BSPC,
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,             KC_H,    DK_COMM,       DK_DOT,  DK_MINS,    DK_BSLS,
+  KC_F24,  MO(4),   KC_LGUI, KC_LALT, MO(1),   KC_SPC,  KC_SFTENT,        MO(2),   LCTL(KC_LSFT), SCRSHOT, DK_GRV,     KEYPIRANHA
 ),
 
 
@@ -123,6 +125,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_F24,  KC_LGUI, KC_LALT, KC_SPC,  KC_SPC,  KC_SPC,  _______, _______,  _______,  _______, TO(0),      _______
 ),
 
+[4] = LAYOUT_preonic_grid(
+  _______, _______, _______, _______,      _______,       _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______,      _______,       _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______,      _______,       _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______,      _______,       _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, DESKTOP_LEFT, DESKTOP_RIGHT, _______, _______, _______, _______, _______, _______, _______
+),
+
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -148,6 +158,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       case KEYPIRANHA:
         if (record->event.pressed) {
           SEND_STRING(SS_LCTL(SS_LGUI(SS_TAP(X_K))));
+        }
+        break;
+      case DESKTOP_LEFT:
+        if (record->event.pressed) {
+          SEND_STRING(SS_LGUI(SS_LCTL(SS_TAP(X_LEFT))));
+        }
+        break;
+      case DESKTOP_RIGHT:
+        if (record->event.pressed) {
+          SEND_STRING(SS_LGUI(SS_LCTL(SS_TAP(X_RIGHT))));
         }
         break;
       case BACKLIT:
