@@ -77,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_RCTRL,       KC_A,           KC_R,           KC_S,           KC_T,           KC_G,           ST_MACRO_1,                                                                     KC_TRANSPARENT, KC_M,           KC_N,           KC_E,           KC_I,           KC_O,           KC_BSPACE,      
     KC_LSHIFT,      KC_Z,           KC_X,           KC_C,           KC_D,           KC_V,                                           KC_K,           KC_H,           DK_COMM,        DK_DOT,         DK_MINS,        DK_BSLS,        
     KC_NO,          LALT(LCTL(LSFT(KC_Z))),KC_RGUI,        KC_LALT,        MO(1),          LGUI(LSFT(KC_S)),                                                                                                ST_MACRO_2,     MO(2),          LCTL(KC_LSHIFT),KC_NO,          DK_GRV,         KC_NO,          
-    KC_SFTENT,KC_DELETE,      KC_PSCREEN,                     KC_TRANSPARENT, KC_F24,         KC_SPACE
+    KC_SPACE,       KC_DELETE,      KC_PSCREEN,                     KC_TRANSPARENT, KC_F24,         KC_SFTENT
   ),
   [1] = LAYOUT_moonlander(
     LALT(KC_F4),    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, DK_EQL,         DK_EXLM,        DK_LPRN,        DK_RPRN,        DK_AMPR,        KC_TRANSPARENT,                                                                 KC_TRANSPARENT, DK_ASTR,        KC_4,           KC_5,           KC_6,           DK_PLUS,        KC_TRANSPARENT, 
     KC_TRANSPARENT, DK_AT,          DK_LABK,        DK_LBRC,        DK_RBRC,        DK_RABK,                                        DK_SLSH,        KC_1,           KC_2,           KC_3,           DK_MINS,        DK_HASH,        
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, LT(2,KC_0),     KC_DOT,         KC_COMMA,       DK_ACUT,        KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, KC_SPACE
   ),
   [2] = LAYOUT_moonlander(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_SYSTEM_SLEEP,
