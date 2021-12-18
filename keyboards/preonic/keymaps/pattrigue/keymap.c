@@ -95,11 +95,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid(
-  LALT(KC_F4),     _______,              _______,         _______,       _______,    _______,    _______,             _______,             _______,             _______,          _______,              KC_SYSTEM_SLEEP,
-  _______,         DK_CIRC,              DK_TILD,         KC_MS_WH_UP,   _______,    _______,    SELECT_LINE,         KC_HOME,             KC_UP,               KC_END,           LSFT(KC_DELETE),          _______,
-  _______,         LCTL(KC_LSHIFT),      _______,         KC_MS_WH_DOWN, KC_MS_BTN1, _______,    LCTL(LSFT(KC_LEFT)), KC_LEFT,             KC_DOWN,             KC_RIGHT,         LCTL(LSFT(KC_RIGHT)), _______,
-  _______,         LCTL(KC_Z),           LCTL(KC_X),      LCTL(KC_C),    LCTL(KC_D), LCTL(KC_V), KC_MEDIA_PREV_TRACK, KC_MEDIA_NEXT_TRACK, DK_SCLN,             DK_COLN,          DK_UNDS,              _______,
-  _______,         KC_AUDIO_VOL_DOWN,    KC_AUDIO_VOL_UP, _______,       _______,    _______,    _______,             _______,             KC_MEDIA_PLAY_PAUSE, BACKLIT,          TO(3),                RESET
+  LALT(KC_F4),     _______,           _______,         _______,       _______,        _______,    _______,             _______,             _______,             _______,          _______,              KC_SYSTEM_SLEEP,
+  _______,         KC_MS_BTN1,        KC_MS_WH_UP,     LALT(KC_LEFT), LALT(KC_RIGHT), DK_CIRC,    SELECT_LINE,         KC_HOME,             KC_UP,               KC_END,           LSFT(KC_DELETE),      _______,
+  _______,         KC_LALT,           KC_MS_WH_DOWN,   KC_LSHIFT,     KC_LCTRL,       DK_TILD,    LCTL(LSFT(KC_LEFT)), KC_LEFT,             KC_DOWN,             KC_RIGHT,         LCTL(LSFT(KC_RIGHT)), _______,
+  _______,         LCTL(KC_Z),        LCTL(KC_X),      LCTL(KC_C),    LCTL(KC_D),     LCTL(KC_V), KC_MEDIA_PREV_TRACK, KC_MEDIA_NEXT_TRACK, DK_SCLN,             DK_COLN,          DK_UNDS,              _______,
+  _______,         KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, _______,       _______,        _______,     _______,    _______,                     KC_MEDIA_PLAY_PAUSE, BACKLIT,          TO(3),                RESET
 ),
 
 /* Qwerty
